@@ -15,11 +15,11 @@ main = do
                 0 1 0 0
                 0 0 1 0
                 0 0 0 (1 :: Double)
-  putStrLn $ "hmatrix/det:" ++ show (H.det m)
-  putStrLn $ "haray/det:" ++ show (LA.det n)
+  putStrLn $ "hmatrix/det = " ++ show (H.det m)
+  putStrLn $ "lin-alg/det = " ++ show (LA.det n)
   defaultMain
     [ bgroup "det" [ bench "hmatrix" $ whnf H.det m
-                   , bench "haray" $ whnf LA.det n]
+                   , bench "lin-alg" $ whnf LA.det n]
     , bgroup "inv" [ bench "hmatrix" $ whnf H.inv m
-                   , bench "haray" $ whnf LA.inv44 n]
+                   , bench "lin-alg" $ whnf LA.inv44 n]
     ]
